@@ -43,7 +43,7 @@ public class CodeGenerator {
 
     /**
      * <p>
-     * 跟据数据库表自动生成java代码和mapper文件
+     *
      * </p>
      */
     public static void main(String[] args) {
@@ -59,7 +59,7 @@ public class CodeGenerator {
     }
 
     /**
-     * 执行
+     *
      *
      * @param moduleName
      * @param tabArr
