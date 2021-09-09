@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzgy.EmailService.modules.sms.mapper.SmsTemplateMapper">
+
+
+        <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzgy.EmailService.modules.sms.entity.SmsTemplateEntity">
+        <id column="id" property="id" />
+        <result column="description" property="description" />
+        <result column="template_code" property="templateCode" />
+        <result column="template_content" property="templateContent" />
+        <result column="symbol" property="symbol" />
+        <result column="is_common" property="isCommon" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, description, template_code, template_content, symbol, is_common, remark
+    </sql>
+
+
+    <!-- mybatis plus where -->
+    <sql id="entityWrapperJoin">
+      <where>
+        <if test="ew != null">
+          <if test="ew.entity != null">
+            <if test="ew.entity.id!=null">
+              AND cur_tab.id=#{ew.entity.id}
+            </if>
+            <if test="ew.entity.description!=null and ew.entity.description!=''">
+              AND cur_tab.description=#{ew.entity.description}
+            </if>
+            <if test="ew.entity.templateCode!=null and ew.entity.templateCode!=''">
+              AND cur_tab.template_code=#{ew.entity.templateCode}
+            </if>
+            <if test="ew.entity.templateContent!=null and ew.entity.templateContent!=''">
+              AND cur_tab.template_content=#{ew.entity.templateContent}
+            </if>
+            <if test="ew.entity.symbol!=null and ew.entity.symbol!=''">
+              AND cur_tab.symbol=#{ew.entity.symbol}
+            </if>
+            <if test="ew.entity.isCommon!=null">
+              AND cur_tab.is_common=#{ew.entity.isCommon}
+            </if>
+            <if test="ew.entity.remark!=null and ew.entity.remark!=''">
+              AND cur_tab.remark=#{ew.entity.remark}
+            </if>
+          </if>
+          <if test="ew!=null and ew.sqlSegment!=null and ew.nonEmptyOfNormal">
+              ${ew.sqlSegment}
+          </if>
+        </if>
+      </where>
+      <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">
+          ${ew.sqlSegment}
+      </if>
+    </sql>
+
+
+</mapper>

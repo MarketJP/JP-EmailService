@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzgy.EmailService.modules.email.mapper.EmailConfigMapper">
+
+
+        <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzgy.EmailService.modules.email.entity.EmailConfigEntity">
+        <id column="id" property="id" />
+        <result column="system_name" property="systemName" />
+        <result column="username" property="username" />
+        <result column="default_encoding" property="defaultEncoding" />
+        <result column="password" property="password" />
+        <result column="host" property="host" />
+        <result column="port" property="port" />
+        <result column="from_name" property="from_name" />
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, system_name, username, default_encoding, password, host, port, from_name
+    </sql>
+
+
+    <!-- mybatis plus where -->
+    <sql id="entityWrapperJoin">
+      <where>
+        <if test="ew != null">
+          <if test="ew.entity != null">
+            <if test="ew.entity.id!=null">
+              AND cur_tab.id=#{ew.entity.id}
+            </if>
+            <if test="ew.entity.systemName!=null and ew.entity.systemName!=''">
+              AND cur_tab.system_name=#{ew.entity.systemName}
+            </if>
+            <if test="ew.entity.username!=null and ew.entity.username!=''">
+              AND cur_tab.username=#{ew.entity.username}
+            </if>
+            <if test="ew.entity.defaultEncoding!=null and ew.entity.defaultEncoding!=''">
+              AND cur_tab.default_encoding=#{ew.entity.defaultEncoding}
+            </if>
+            <if test="ew.entity.password!=null and ew.entity.password!=''">
+              AND cur_tab.password=#{ew.entity.password}
+            </if>
+            <if test="ew.entity.host!=null and ew.entity.host!=''">
+              AND cur_tab.host=#{ew.entity.host}
+            </if>
+            <if test="ew.entity.port!=null and ew.entity.port!=''">
+              AND cur_tab.port=#{ew.entity.port}
+            </if>
+          </if>
+          <if test="ew!=null and ew.sqlSegment!=null and ew.nonEmptyOfNormal">
+              ${ew.sqlSegment}
+          </if>
+        </if>
+      </where>
+      <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">
+          ${ew.sqlSegment}
+      </if>
+    </sql>
+
+
+</mapper>

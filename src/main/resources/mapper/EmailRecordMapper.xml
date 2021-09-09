@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzgy.EmailService.modules.email.mapper.EmailRecordMapper">
+
+
+        <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzgy.EmailService.modules.email.entity.EmailRecordEntity">
+        <id column="id" property="id" />
+        <result column="system_name" property="systemName" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="mail" property="mail" />
+        <result column="result" property="result" />
+        <result column="creator" property="creator" />
+        <result column="create_time" property="createTime" />
+        <result column="modifier" property="modifier" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      id, system_name, title, content, mail, result, creator, create_time, modifier, modify_time
+    </sql>
+
+
+    <!-- mybatis plus where -->
+    <sql id="entityWrapperJoin">
+      <where>
+        <if test="ew != null">
+          <if test="ew.entity != null">
+            <if test="ew.entity.id!=null">
+              AND cur_tab.id=#{ew.entity.id}
+            </if>
+            <if test="ew.entity.systemName!=null and ew.entity.systemName!=''">
+              AND cur_tab.system_name=#{ew.entity.systemName}
+            </if>
+            <if test="ew.entity.title!=null and ew.entity.title!=''">
+              AND cur_tab.title=#{ew.entity.title}
+            </if>
+            <if test="ew.entity.content!=null and ew.entity.content!=''">
+              AND cur_tab.content=#{ew.entity.content}
+            </if>
+            <if test="ew.entity.mail!=null and ew.entity.mail!=''">
+              AND cur_tab.mail=#{ew.entity.mail}
+            </if>
+            <if test="ew.entity.result!=null">
+              AND cur_tab.result=#{ew.entity.result}
+            </if>
+            <if test="ew.entity.creator!=null">
+              AND cur_tab.creator=#{ew.entity.creator}
+            </if>
+            <if test="ew.entity.createTime!=null">
+              AND cur_tab.create_time=#{ew.entity.createTime}
+            </if>
+            <if test="ew.entity.modifier!=null">
+              AND cur_tab.modifier=#{ew.entity.modifier}
+            </if>
+            <if test="ew.entity.modifyTime!=null">
+              AND cur_tab.modify_time=#{ew.entity.modifyTime}
+            </if>
+          </if>
+          <if test="ew!=null and ew.sqlSegment!=null and ew.nonEmptyOfNormal">
+              ${ew.sqlSegment}
+          </if>
+        </if>
+      </where>
+      <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">
+          ${ew.sqlSegment}
+      </if>
+    </sql>
+
+
+</mapper>
